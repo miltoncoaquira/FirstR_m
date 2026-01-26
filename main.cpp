@@ -82,9 +82,6 @@ int main(){
     generarArregloAleatorio( vec5, mod );
     mostrarA( vec5 );
 
-    int vec7[tamanio];
-    for(size_t i = 0; )
-
-
+    
 return 0;    
 }
