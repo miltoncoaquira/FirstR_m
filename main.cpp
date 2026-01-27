@@ -5,7 +5,8 @@
 #include <cstdlib>
 #include <ctime>
 
-
+template < typename T >
+using Operador= T(*)(T[],size_t) ;
 
 template < typename T >
 void ordenar ( T vec[], size_t n ){
@@ -114,6 +115,12 @@ int main(){
     vec9[10] = 47;
 
     procesar( vec9, tamanio, max );
+
+    Operador<int> op= max;
+
+    procesar( vec9, tamanio, op);
+
+
     
 return 0;    
 }
