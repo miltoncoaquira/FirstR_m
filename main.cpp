@@ -8,7 +8,7 @@
 
 
 template < typename T >
-void ordenar ( T vec[], int n ){
+void ordenar ( T vec[], size_t n ){
     for( size_t i = 0; i < n - 1 ; i++){
         for( size_t j = 0; j < n - i - 1; j++){
             if( vec[j] > vec[j+1]){
@@ -21,7 +21,7 @@ void ordenar ( T vec[], int n ){
 }
 
 template < typename T >
-void mostrar( const T vec[], int n ){
+void mostrar( const T vec[], size_t n ){
     
     std::cout << "[ ";
     for( size_t i = 0; i < n; i++ ){
@@ -39,7 +39,27 @@ void mostrarA(std::array<T,N> arreglo){
     std::cout << "]" << std::endl;
 }
 
-//void procesar( int vec, )
+
+template < typename T >
+
+T max( T vec[], size_t n ){
+    T max = vec[0];
+    for( size_t i = 1; i < n; i++ ){
+        if(vec[i] > max)
+            max = vec[i];
+    }
+return max;    
+}
+
+
+
+
+
+
+template < typename T >
+void procesar( T vec[], size_t n, T (*f)(T[], size_t) ){
+    std::cout << f(vec,n) << std::endl;
+}
 
 template <size_t N>
 void generarArregloAleatorio( std::array<int,N>& arreglo, int mod){
@@ -54,7 +74,7 @@ int main(){
 
     std::cout << "zzzzzzzzzzz" << std::endl;
 
-    void (*f)(int[], int) = ordenar;
+    void (*f)(int[], size_t) = ordenar;
     
     int vec[]= {1,5,5,7,1,-8};
 
@@ -82,6 +102,18 @@ int main(){
     generarArregloAleatorio( vec5, mod );
     mostrarA( vec5 );
 
+    std::cout << max(vec2, 5) << std::endl;
+
+    int vec9[tamanio];
+    for( size_t i=0; i<tamanio; i++){
+        vec9[i] = vec5[i];
+    }
+
+    std::cout << max(vec9, tamanio) << std::endl;
+
+    vec9[10] = 47;
+
+    procesar( vec9, tamanio, max );
     
 return 0;    
 }
