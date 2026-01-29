@@ -1,21 +1,19 @@
 CXX = g++
+CXXFLAGS = -Wall -Wextra -std=c++17
 
-CXXFLAGS = -Wall -std=c++11 -g
+OBJ = main.o Complejo.o
+EXEC = programa
 
-TARGET = main.exe
+all: $(EXEC)
 
-all: $(TARGET)
+$(EXEC): $(OBJ)
+	$(CXX) $(CXXFLAGS) -o $(EXEC) $(OBJ)
 
-$(TARGET): main.o #ordenador.o
-	$(CXX) $(CXXFLAGS) -o $(TARGET) main.o 
-# ordenador.o
-
-main.o: main.cpp #ordenador.h
+main.o: main.cpp Complejo.h
 	$(CXX) $(CXXFLAGS) -c main.cpp
 
-#ordenador.o: ordenador.cpp ordenador.h
-#	$(CXX) $(CXXFLAGS) -c ordenador.cpp
-
+Complejo.o: Complejo.cpp Complejo.h
+	$(CXX) $(CXXFLAGS) -c Complejo.cpp
 
 clean:
-	rm -f *.o $(TARGET)
+	rm -f $(OBJ) $(EXEC)
